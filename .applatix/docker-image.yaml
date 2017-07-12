@@ -24,17 +24,17 @@ steps:
     checkout:
       template: axscm-checkout
   -
-    ubuntu1404-build:
+    ubuntu14.04-build:
       template: build-image-container
       parameters:
         code: "%%steps.checkout.code%%"
         os: "ubuntu14.04"
-    ubuntu1510-build:
+    ubuntu15.10-build:
       template: build-image-container
       parameters:
         code: "%%steps.checkout.code%%"
         os: "ubuntu15.10"
-    ubuntu1604-build:
+    ubuntu16.04-build:
       template: build-image-container
       parameters:
         code: "%%steps.checkout.code%%"
@@ -48,17 +48,17 @@ steps:
     approval:
       template: axapproval
   -
-    ubuntu1404-publish-image:
+    ubuntu14.04-publish-image:
       template: push-image-container
       parameters:
         image: "%%steps.ubuntu1404-build.image%%"
         os: "ubuntu14.04"
-    ubuntu1510-publish-image:
+    ubuntu15.10-publish-image:
       template: push-image-container
       parameters:
         image: "%%steps.ubuntu1510-build.image%%"
         os: "ubuntu15.10"
-    ubuntu1604-publish-image:
+    ubuntu16.04-publish-image:
       template: push-image-container
       parameters:
         image: "%%steps.ubuntu1604-build.image%%"
@@ -154,6 +154,7 @@ notifications:
     whom:
       - committer
       - author
+      - karthik@streaml.io
 when:
   -
     event: on_push
