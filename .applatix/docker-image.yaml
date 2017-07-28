@@ -130,10 +130,10 @@ inputs:
     os:
     # Encoded username and password
     docker_username:
-      default: "%%secrets.==$1$key=default$text$AIrkE/5KDn6xaSnAaAyvgP/mtUl/TyPzPksAtInSJ8aCpzwh6JhkNRpwNLjiskT1aD8g41X1oOBMqhf22oDzTZ/7QppaN15xcft/xla9OceACpjwK+bw2GPpJNSvOUNqXKzHWVppljuEc6tA3zd2OIfRzpP4Q7NOu3dB4+2QGcOznR+bIzAGHWlFDppJBFOgfHr/6x9VAK9luTT2eYampcg8nyYyJTCF49UgiOC09myfVowJluwNdLQEfnhzKj8If3rPglYWrLMxqlzLre2ymdCiGpv/kx4L7GIlrZ8gltkv54K46v+Ui+ZS7GgaXgfxce6K0sR77/9uZN0dz8VHXYTaT7B/03GYvgKJH7//e3hwD2uCoNkaw/cByxxuclIlb+vGnUUwCwyTs8bsd4vcUbvR7qLr0VfEhI5oc5ZhfLeUnQ====%%"
+      default: "%%secrets.==$1$key=default$text$AAyTUUATROvK9gRT0oRtGfMmH9lDiOLBCiAHZ/bob2h1Cvc9ld7fLTGvhkUVu1zxJtOaJszlPy1i1ihH5XRHjIzWDdUCzIUWD63glgazTyvGMnUh+V9Qu1TZ2Six3i2jmXDqZgD09y1jNML87mpUXa6ZSZ29quybyMlrBFjqKr9yMKF8pM0YDgBDu0HoY7KmNEfRXev9vgEFV/g665hRWpks0Z7HZu8IlWraTI3JBdLHi4htuTbOap+ZUlsd7YNkp2aClrh5L32d4fGv7wcNx3mX6MlEPbXe6Srq6aiUuFcHX5duxcc8MFL/+g9mF4DIb/4hUs8Gy5pnAWsqdI+Shv9s82Hp1/UqXoEr3QaUtw+5+Dy96sjg68AZdOUtEZ258NP3taTPd8BcOp0Lz5HBEmdVbi+LBIFy+46fboZRVsgq5w====%%"
 
     docker_password:
-      default: "%%secrets.==$1$key=default$text$ANHRCDVvE1OBTJBv4Rdm5+pzpG6wncaUHU8MVte6rgsP9be97/v8+JQdzvz7vWAPXbd0HQP+ail3hr+xy5NZq5zxAWCelcBWwtAiBNSxR86Xomzp24aWE7AT8x4cMXnycIqeJmOtmMj8/Y4zMpVC4W84UTz+vslN85NohbCebg7LsTdEoYlPBFld6Sv5TT4CRiU4+sXOhJ7OE5stFnWFXtccN5oBvv1s2iYuRlWrLzEVFjLMDa/ekKyRhh4ibzP2joTZaCZz8SbGm7E2FjjooKmMeoeBMTZYAj0/hwLkuETdRBjRwbliIS5UujzVK8dk5uB2+71ovYZQSLEnDNaFc+1XTcuyBQNOV7uIBUcWLEi5YpHbzTmp3avSGPfv1JBdeu/U/mytIjixZiAsRZcVZajuqaKdqvRkbvtxcQNpNFi6ig====%%"
+      default: "%%secrets.==$1$key=default$text$AOsM7XamOWUnuRnvAe+EJi1uUwqQWKZ78WqlR5kjf32JpqVPHYhkZCSxEMaa9+dgD7vHEvUoGuqubJwCV9CArTwZF38IaOCFh3QUbBI4x0xAXrVCyxJamEtNUCsFAnI7b4iN37/mZT5y74ZPMn6HLojmAM3eX6MQMf2nOzjeVY58XAhm2b3yBOlzuThGHPhuhufJIdoki5UTlFo7ezOY82iCy235yC4oPwuekJdgWH4sSRxcUFgEqd3bDCk3GjVndC7C+s2sUt7tJB1MeYyYLPoS6wkkbychgFhH9rNY+l2Z4TYHme9Q8aS1PzniPqpskW0ywK7HQ9rhV+UAgULSJqKj/5RO5R771mbVrdGDE808vLFN/Fuq8OYesGemU7xCO/V4LUwGaoHI7agBYljhLq2fhZDBAGTeBFmQTXRmDfgPEg====%%"
 
 labels:
     # Enable docker access in this container by specifying the size of graph storage needed and the amount of cpu and memory required for docker commands
