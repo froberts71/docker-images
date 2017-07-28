@@ -24,17 +24,17 @@ steps:
     checkout:
       template: axscm-checkout
   -
-    ubuntu14.04-build:
+    ubuntu1404-build:
       template: build-image-container
       parameters:
         code: "%%steps.checkout.code%%"
         os: "ubuntu14.04"
-    ubuntu15.10-build:
+    ubuntu1510-build:
       template: build-image-container
       parameters:
         code: "%%steps.checkout.code%%"
         os: "ubuntu15.10"
-    ubuntu16.04-build:
+    ubuntu1604-build:
       template: build-image-container
       parameters:
         code: "%%steps.checkout.code%%"
@@ -48,17 +48,17 @@ steps:
     approval:
       template: axapproval
   -
-    ubuntu14.04-publish-image:
+    ubuntu1404-publish-image:
       template: push-image-container
       parameters:
         image: "%%steps.ubuntu1404-build.image%%"
         os: "ubuntu14.04"
-    ubuntu15.10-publish-image:
+    ubuntu1510-publish-image:
       template: push-image-container
       parameters:
         image: "%%steps.ubuntu1510-build.image%%"
         os: "ubuntu15.10"
-    ubuntu16.04-publish-image:
+    ubuntu1604-publish-image:
       template: push-image-container
       parameters:
         image: "%%steps.ubuntu1604-build.image%%"
