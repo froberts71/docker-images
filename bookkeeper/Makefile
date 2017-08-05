@@ -190,5 +190,5 @@ clean-files:
 clean:
 	-docker stop $(CONTAINER_NAME)
 	-docker rm $(CONTAINER_NAME)
-	-docker rmi $(IMAGE)
+	-docker rmi -f $(IMAGE)
 	make clean-files
