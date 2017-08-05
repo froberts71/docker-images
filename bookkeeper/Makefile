@@ -57,7 +57,7 @@ all:
 build:
 	cd $(BUILD_DIR) ; \
 	time docker build \
-		-f "Dockerfile.ubuntu14.04" --no-cache \
+		-f "Dockerfile.ubuntu16.04"--no-cache \
 	    -t $(IMAGE) .
 
 # -------------------------------- #
