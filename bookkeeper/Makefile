@@ -21,7 +21,7 @@
 # */
 
 
-VERSION ?= centos
+VERSION ?= ubuntu 
 IMAGE ?= bookkeeper/bookie:$(VERSION)
 BOOKIE ?= 1
 DOCKER_NETWORK ?= bk_network
@@ -57,6 +57,7 @@ all:
 build:
 	cd $(BUILD_DIR) ; \
 	time docker build \
+		-f "Dockerfile.ubuntu14.04" --no-cache \
 	    -t $(IMAGE) .
 
 # -------------------------------- #
