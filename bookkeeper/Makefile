@@ -21,7 +21,7 @@
 # */
 
 
-VERSION ?= ubuntu 
+VERSION ?= alpine
 IMAGE ?= bookkeeper/bookie:$(VERSION)
 BOOKIE ?= 1
 DOCKER_NETWORK ?= bk_network
@@ -57,7 +57,7 @@ all:
 build:
 	cd $(BUILD_DIR) ; \
 	time docker build \
-		-f "Dockerfile.ubuntu16.04" --no-cache \
+		-f "Dockerfile.alpine" --no-cache \
 	    -t $(IMAGE) .
 
 # -------------------------------- #
