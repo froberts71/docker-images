@@ -41,7 +41,6 @@ echo "BK_zkServers is $BK_zkServers"
 echo "BK_DATA_DIR is $BK_DATA_DIR"
 echo "BK_CLUSTER_ROOT_PATH is $BK_CLUSTER_ROOT_PATH"
 
-
 mkdir -p "${BK_journalDirectory}" "${BK_ledgerDirectories}" "${BK_indexDirectories}"
 # -------------- #
 # Allow the container to be started with `--user`
@@ -55,10 +54,12 @@ fi
 python apply-config-from-env.py /opt/bookkeeper/conf
 
 echo "wait for zookeeper"
-until /opt/bookkeeper/bin/bookkeeper org.apache.zookeeper.ZooKeeperMain -server ${BK_zkServers} ls /; do sleep 5; done
+#until /opt/bookkeeper/bin/bookkeeper org.apache.zookeeper.ZooKeeperMain -server ${BK_zkServers} ls /; do sleep 5; done
+until /opt/zk/bin/zkCli.sh  -server ${BK_zkServers} ls /; do sleep 5; done
 
 echo "create the zk root dir for bookkeeper"
-/opt/bookkeeper/bin/bookkeeper org.apache.zookeeper.ZooKeeperMain -server ${BK_zkServers} create ${BK_CLUSTER_ROOT_PATH}
+#/opt/bookkeeper/bin/bookkeeper org.apache.zookeeper.ZooKeeperMain -server ${BK_zkServers} create ${BK_CLUSTER_ROOT_PATH}
+/opt/zk/bin/zkCli.sh -server ${BK_zkServers} create ${BK_CLUSTER_ROOT_PATH}
 
 echo "format zk metadata"
 echo "please ignore the failure, if it has already been formatted, "
