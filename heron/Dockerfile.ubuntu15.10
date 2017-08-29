@@ -1,7 +1,7 @@
 FROM ubuntu:15.10
 
 ENV TARGET_PLATFORM ubuntu
-ENV bazelVersion 0.3.1
+ENV bazelVersion 0.5.4
 
 RUN apt-get update && apt-get -y install \
       automake \
