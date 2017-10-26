@@ -8,7 +8,6 @@ RUN yum -y upgrade
 RUN yum -y install \
       automake \
       curl \
-      cmake \
       openssl-devel \
       file \
       gcc \
@@ -27,6 +26,10 @@ RUN yum -y install \
       which
 
 RUN yum clean all
+
+RUN cd /root && wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz && \
+    tar xvfz cmake-3.6.2.tar.gz && cd cmake-3.6.2 && ./bootstrap --prefix=/usr && \
+    make install && cd /root && rm -rf cmake-3.6.2.tar.gz cmake-3.6.2
 
 RUN easy_install pip
 RUN pip install wheel
