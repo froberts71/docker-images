@@ -52,5 +52,7 @@ RUN echo 'cd /tmp/bazel-$bazelVersion-dist && bash ./compile.sh && cp output/baz
 
 RUN [ -f /usr/local/bin/bazel ] && /bin/rm -rf /tmp/bazel-$bazelVersion-dist
 
+RUN yum -y install gcc-c++
+
 RUN touch /root/.bazelrc
 RUN bazel version
