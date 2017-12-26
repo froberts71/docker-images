@@ -1,0 +1,23 @@
+FROM centos:centos6
+
+RUN yum -y update && yum clean all
+
+RUN yum -y install wget which findutils tar gzip zip unzip git zlib-devel
+RUN yum -y install java-1.8.0-openjdk-devel
+RUN yum -y install centos-release-scl-rh
+
+RUN yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++ devtoolset-3-binutils
+
+# GPG key
+RUN gpg --recv-key 48457EE0 ; gpg --recv-key 48457EE0
+
+ADD https://github.com/bazelbuild/bazel/releases/download/0.9.0/bazel-0.9.0-dist.zip /
+ADD https://github.com/bazelbuild/bazel/releases/download/0.9.0/bazel-0.9.0-dist.zip.sig /
+RUN gpg --verify bazel-0.9.0-dist.zip.sig && unzip -d /tmp/bazel-0.9.0-dist  bazel-0.9.0-dist.zip && \
+    /bin/rm bazel-0.9.0-dist.zip.sig bazel-0.9.0-dist.zip
+# enable the new devtoolset
+RUN echo 'cd /tmp/bazel-0.9.0-dist && bash ./compile.sh && cp output/bazel /usr/local/bin' | scl enable devtoolset-3 bash
+
+RUN [ -f /usr/local/bin/bazel ] && /bin/rm -rf /tmp/bazel-0.9.0-dist
+
+RUN bazel version
