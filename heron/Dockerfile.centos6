@@ -27,21 +27,30 @@ RUN yum -y install \
       which
 
 RUN yum clean all
-RUN wget http://people.centos.org/tru/devtools-2/devtools-2.repo -O /etc/yum.repos.d/devtools-2.repo
-RUN yum -y install devtoolset-2-gcc devtoolset-2-binutils devtoolset-2-gcc-c++
+RUN yum -y install centos-release-scl-rh
+RUN yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++ devtoolset-3-binutils
 
-RUN cd /root && wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz && tar xvfz cmake-3.6.2.tar.gz 
+RUN cd /root && wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz && tar xvfz cmake-3.6.2.tar.gz
 
-RUN cd /root/cmake-3.6.2 && scl enable devtoolset-2 "./bootstrap --prefix=/usr" && \
-    scl enable devtoolset-2 "make install" && cd /root && rm -rf cmake-3.6.2.tar.gz cmake-3.6.2
+RUN cd /root/cmake-3.6.2 && scl enable devtoolset-3 "./bootstrap --prefix=/usr" && \
+    scl enable devtoolset-3 "make install" && cd /root && rm -rf cmake-3.6.2.tar.gz cmake-3.6.2
 
 RUN yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel; yum clean all
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0
 
 RUN yum -y install maven; yum clean all
 
-RUN wget -O /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/$bazelVersion/bazel-$bazelVersion-installer-linux-x86_64.sh
-RUN chmod +x /tmp/bazel.sh && scl enable devtoolset-2 /tmp/bazel.sh
-RUN rm -rf /tmp/bazel.sh
+# GPG key
+RUN gpg --recv-key 48457EE0 ; gpg --recv-key 48457EE0
+
+ADD https://github.com/bazelbuild/bazel/releases/download/$bazelVersion/bazel-$bazelVersion-dist.zip /
+ADD https://github.com/bazelbuild/bazel/releases/download/$bazelVersion/bazel-$bazelVersion-dist.zip.sig /
+RUN gpg --verify bazel-$bazelVersion-dist.zip.sig && unzip -d /tmp/bazel-$bazelVersion-dist  bazel-$bazelVersion-dist.zip && \
+    /bin/rm bazel-$bazelVersion-dist.zip.sig bazel-$bazelVersion-dist.zip
+# enable the new devtoolset
+RUN echo 'cd /tmp/bazel-$bazelVersion-dist && bash ./compile.sh && cp output/bazel /usr/local/bin' | scl enable devtoolset-3 bash
+
+RUN [ -f /usr/local/bin/bazel ] && /bin/rm -rf /tmp/bazel-$bazelVersion-dist
+
 RUN touch /root/.bazelrc
-RUN scl enable devtoolset-2 "bazel version"
+RUN bazel version
