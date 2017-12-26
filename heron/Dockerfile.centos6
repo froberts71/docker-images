@@ -54,5 +54,8 @@ RUN [ -f /usr/local/bin/bazel ] && /bin/rm -rf /tmp/bazel-$bazelVersion-dist
 
 RUN yum -y install gcc-c++
 
+ENV CC "/opt/rh/devtoolset-3/root/usr/bin/gcc"
+ENV CXX "/opt/rh/devtoolset-3/root/usr/bin/g++"
+
 RUN touch /root/.bazelrc
 RUN bazel version
