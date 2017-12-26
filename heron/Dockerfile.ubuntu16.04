@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 # This is passed to the heron build command via the --config flag
 ENV TARGET_PLATFORM ubuntu
-ENV bazelVersion 0.5.4
+ENV bazelVersion 0.9.0
 
 RUN apt-get update && apt-get -y install \
       automake \
@@ -48,7 +48,7 @@ RUN cd /root/.nvm && chmod +x nvm.sh && cd .. && . /root/.nvm/nvm.sh && nvm inst
 RUN wget -q https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_amd64.deb
 RUN dpkg -i hugo*.deb
 RUN hugo version
-RUN apt-get install -y nodejs  
+RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 RUN rm -rf hugo_0.15_amd64.deb
 RUN apt-get clean all
