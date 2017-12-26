@@ -57,5 +57,8 @@ RUN yum -y install gcc-c++
 ENV CC "/opt/rh/devtoolset-3/root/usr/bin/gcc"
 ENV CXX "/opt/rh/devtoolset-3/root/usr/bin/g++"
 
+RUN yum -y install centos-release-scl
+RUN yum -y install python27
+
 RUN touch /root/.bazelrc
 RUN bazel version
