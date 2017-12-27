@@ -66,6 +66,8 @@ ENV CC "/opt/rh/devtoolset-3/root/usr/bin/gcc"
 ENV CXX "/opt/rh/devtoolset-3/root/usr/bin/g++"
 
 RUN ln -s /opt/rh/python27/root/usr/bin/python /usr/bin/python2.7
+RUN echo '/opt/rh/python27/root/usr/lib64' >> /etc/ld.so.conf
+RUN ldconfig
 
 RUN touch /root/.bazelrc
 RUN libtool --version
