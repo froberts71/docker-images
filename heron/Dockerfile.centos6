@@ -54,11 +54,18 @@ RUN [ -f /usr/local/bin/bazel ] && /bin/rm -rf /tmp/bazel-$bazelVersion-dist
 
 RUN yum -y install gcc-c++
 
-ENV CC "/opt/rh/devtoolset-3/root/usr/bin/gcc"
-ENV CXX "/opt/rh/devtoolset-3/root/usr/bin/g++"
-
 RUN yum -y install centos-release-scl
 RUN yum -y install python27
 
+RUN wget https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/libtool-2.4.2-22.el7_3.x86_64.rpm
+RUN rpm --nodeps --force -ivh libtool-2.4.2-22.el7_3.x86_64.rpm
+
+RUN ln -s /bin/sed /usr/bin/sed
+
+ENV CC "/opt/rh/devtoolset-3/root/usr/bin/gcc"
+ENV CXX "/opt/rh/devtoolset-3/root/usr/bin/g++"
+
 RUN touch /root/.bazelrc
+RUN libtool --version
 RUN bazel version
+
