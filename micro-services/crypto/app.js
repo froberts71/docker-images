@@ -7,9 +7,23 @@
  *  the various values for each of the above symbols, and what they mean.
  *
  *  Subscription requests have the following format: {FeedType}~{ExchangeName}~{CurrencySymbol}~{CurrencySymbol}
+ *
+ *  USAGE: node app.js -s '["5~CCCAGG~BTC~USD", "5~CCCAGG~ETH~USD"]'
+ *
+ *     -s, --subs    An array of subscription requests
  */
  
- 
+'use strict';
+
+// Get the command line arguments
+const minimist = require('minimist');
+
+let args = minimist(process.argv.slice(2), {
+    alias: {
+        s: 'sub'
+    }
+});
+
 // Start a WebSocket Server on port 4019
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 4019 });
@@ -29,8 +43,9 @@ emitter.on('quote', function broadcast(data) {
 
 // Emit events
 var socket = require('socket.io-client')('https://streamer.cryptocompare.com/')
-var subscription = ['5~CCCAGG~BTC~USD', '5~CCCAGG~ETH~USD']
-socket.emit('SubAdd', {subs: subscription})
+socket.emit('SubAdd', {subs: JSON.parse(args.s)})
 socket.on("m", function (message) {
+   console.log(message);
    emitter.emit('quote', message);
 })
+
