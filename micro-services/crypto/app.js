@@ -5,6 +5,8 @@
  *
  *  See https://github.com/cryptoqween/cryptoqween.github.io/blob/master/streamer/ccc-streamer-utilities.js for details on
  *  the various values for each of the above symbols, and what they mean.
+ *
+ *  Subscription requests have the following format: {FeedType}~{ExchangeName}~{CurrencySymbol}~{CurrencySymbol}
  */
  
  
