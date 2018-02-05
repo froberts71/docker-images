@@ -24,5 +24,5 @@ EXPOSE 4019
 #####################################################################
 # Start Node
 #####################################################################
-CMD ["/opt/services/crypto/app.js", " -s '["5~CCCAGG~BTC~USD", "5~CCCAGG~ETH~USD"]'"]
+CMD ["/opt/services/crypto/app.js", "--sub", "[\"5~CCCAGG~BTC~USD\", \"5~CCCAGG~ETH~USD\"]"]
 ENTRYPOINT ["node"]

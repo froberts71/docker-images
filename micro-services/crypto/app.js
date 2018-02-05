@@ -10,7 +10,7 @@
  *
  *  USAGE: node app.js -s '["5~CCCAGG~BTC~USD", "5~CCCAGG~ETH~USD"]'
  *
- *     -s, --subs    An array of subscription requests
+ *     -s, --sub    An array of subscription requests
  */
  
 'use strict';
