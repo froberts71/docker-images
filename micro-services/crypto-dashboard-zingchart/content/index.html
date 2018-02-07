@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: #3F5666;
+    clear: left;
+    text-align: center;
+}
+
+
+article {
+    margin-left: 0px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.flex-container {
+  display: flex;
+  align-items: stretch;
+  
+}
+
+.flex-container>div {
+  width: 80px;
+  margin: 10px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+   <div class="flex-container">
+    <div><a href="html/tickers.htm" target="myIframe">Overview</a></div>
+  	<div><a href="html/BTC.htm" target="myIframe">Bitcoin</a></div>
+  	<div><a href="html/ETH.htm" target="myIframe">Ethereum</a></div>
+  	<div><a href="html/LTC.htm" target="myIframe">Litecoin</a></div>
+  </div>
+</header>
+  
+
+<article>
+  <iframe src ="html/tickers.htm" height="650" width="100%" style="border:none;" scrolling="no" name="myIframe"/>
+</article>
+
+<footer>Copyright &copy; Streamlio, Inc</footer>
+
+</div>
+
+</body>
+</html>
