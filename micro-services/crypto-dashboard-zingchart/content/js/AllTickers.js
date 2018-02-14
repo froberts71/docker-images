@@ -37,29 +37,12 @@ var myConfig = {
          "offset-x":"10%",
          "offset-y":"10%"
       },    
-      "legend":{
-          "toggle-action":"remove",
-          "layout":"x4",
-          "x":"20%",
-          "shadow":false,
-          "border-color":"#000000",
-          "background-color":"none",
-          "item":{
-             "font-color":"#000000"
-          },
-          "marker":{
-                "type":"circle",
-                "border-width":0
-            },
-            "tooltip":{
-                "text":"%plot-description"
-                }
-      },
+      
       "tooltip": {
          "visible": false
       },
       "scale-x": {
-        "min-value": 1518020658724,
+        "min-value": 1518640974669,
         "step": 1000,
         "line-color": "#000000",
         "tick": {
@@ -87,7 +70,7 @@ var myConfig = {
         "minor-ticks": 0
       },
       "scale-y": {
-        "values": "7000:8000:100",
+        "values": "9200:9350:10",
         "line-color": "#000000",
         "shadow": 0,
         "tick": {
@@ -124,10 +107,10 @@ var myConfig = {
             },
        
         "refresh": {
-    				type: 'feed',
-    				transport: 'js',
-    				url: 'BTCfeed()',
-    				interval: 500
+    				"type": 'feed',
+    				"transport":"websockets",
+    				"url": "ws://localhost:5218",
+    				"method" : "push"
   	    },
         "plot": {
             "tooltip-text": "%t views: %v<br>%k",
@@ -149,7 +132,7 @@ var myConfig = {
         "series": [
                 {
                     "values": [],
-                    "text": "CryptoCompare",
+                    "text": "Last Trade",
                     "line-color": "#007790",
                     "legend-marker": {
                         "type": "circle",
@@ -164,64 +147,6 @@ var myConfig = {
                         "border-width": 1,
                         "shadow": 0,
                         "border-color": "#69dbf1"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "BTCChina",
-                    "line-color": "#009872",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#009872",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#69f2d0"
-                    },
-                    "marker": {
-                        "background-color": "#009872",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#69f2d0"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "Cryptsy",
-                    "line-color": "#da534d",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#da534d",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#faa39f"
-                    },
-                    "marker": {
-                        "background-color": "#da534d",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#faa39f"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "EWMA",
-                    "line-color":"#3f0bff",
-    		  			"line-style":"dashed",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#3f0bff",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#3f0bff"
-                    },
-                    "marker": {
-                        "background-color": "#3f0bff",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#3f0bff"
                     }
                 }
         ]
@@ -244,29 +169,12 @@ var myConfig = {
          "offset-x":"10%",
          "offset-y":"10%"
       },    
-      "legend":{
-          "toggle-action":"remove",
-          "layout":"x4",
-          "x":"20%",
-          "shadow":false,
-          "border-color":"#000000",
-          "background-color":"none",
-          "item":{
-             "font-color":"#000000"
-          },
-          "marker":{
-                "type":"circle",
-                "border-width":0
-            },
-            "tooltip":{
-                "text":"%plot-description"
-                }
-      },
+     
       "tooltip": {
          "visible": false
       },
       "scale-x": {
-        "min-value": 1518020658724,
+        "min-value": 1518640974669,
         "step": 1000,
         "line-color": "#000000",
         "tick": {
@@ -294,7 +202,7 @@ var myConfig = {
         "minor-ticks": 0
       },
       "scale-y": {
-        "values": "650:800:25",
+        "values": "880:980:10",
         "line-color": "#000000",
         "shadow": 0,
         "tick": {
@@ -331,10 +239,10 @@ var myConfig = {
             },
        
         "refresh": {
-    				type: 'feed',
-    				transport: 'js',
-    				url: 'ETHfeed()',
-    				interval: 500
+    				"type": 'feed',
+    				"transport":"websockets",
+    				"url": "ws://localhost:5219",
+    				"method" : "push"
   	    },
         "plot": {
             "tooltip-text": "%t views: %v<br>%k",
@@ -356,79 +264,21 @@ var myConfig = {
         "series": [
                 {
                     "values": [],
-                    "text": "CryptoCompare",
-                    "line-color": "#007790",
+                    "text": "Last Trade",
+                    "line-color": "#298213",
                     "legend-marker": {
                         "type": "circle",
                         "size": 5,
-                        "background-color": "#007790",
+                        "background-color": "#298213",
                         "border-width": 1,
                         "shadow": 0,
-                        "border-color": "#69dbf1"
+                        "border-color": "#298213"
                     },
                     "marker": {
-                        "background-color": "#007790",
+                        "background-color": "#298213",
                         "border-width": 1,
                         "shadow": 0,
-                        "border-color": "#69dbf1"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "BTCChina",
-                    "line-color": "#009872",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#009872",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#69f2d0"
-                    },
-                    "marker": {
-                        "background-color": "#009872",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#69f2d0"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "Cryptsy",
-                    "line-color": "#da534d",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#da534d",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#faa39f"
-                    },
-                    "marker": {
-                        "background-color": "#da534d",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#faa39f"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "EWMA",
-                    "line-color":"#3f0bff",
-    		  			"line-style":"dashed",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#3f0bff",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#3f0bff"
-                    },
-                    "marker": {
-                        "background-color": "#3f0bff",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#3f0bff"
+                        "border-color": "#298213"
                     }
                 }
         ]
@@ -452,29 +302,12 @@ var myConfig = {
          "offset-x":"10%",
          "offset-y":"10%"
       },    
-      "legend":{
-          "toggle-action":"remove",
-          "layout":"x4",
-          "x":"20%",
-          "shadow":false,
-          "border-color":"#000000",
-          "background-color":"none",
-          "item":{
-             "font-color":"#000000"
-          },
-          "marker":{
-                "type":"circle",
-                "border-width":0
-            },
-            "tooltip":{
-                "text":"%plot-description"
-                }
-      },
+      
       "tooltip": {
          "visible": false
       },
       "scale-x": {
-        "min-value": 1518020658724,
+        "min-value": 1518640974669,
         "step": 1000,
         "line-color": "#000000",
         "tick": {
@@ -502,7 +335,7 @@ var myConfig = {
         "minor-ticks": 0
       },
       "scale-y": {
-        "values": "50:100:5",
+        "values": "190:220:5",
         "line-color": "#000000",
         "shadow": 0,
         "tick": {
@@ -539,10 +372,10 @@ var myConfig = {
             },
        
         "refresh": {
-    				type: 'feed',
-    				transport: 'js',
-    				url: 'LTCfeed()',
-    				interval: 500
+    				"type": 'feed',
+    				"transport":"websockets",
+    				"url": "ws://localhost:5220",
+    				"method" : "push"
   	    },
         "plot": {
             "tooltip-text": "%t views: %v<br>%k",
@@ -564,79 +397,21 @@ var myConfig = {
         "series": [
                 {
                     "values": [],
-                    "text": "CryptoCompare",
-                    "line-color": "#007790",
+                    "text": "Last Trade",
+                    "line-color": "#d83a0f",
                     "legend-marker": {
                         "type": "circle",
                         "size": 5,
-                        "background-color": "#007790",
+                        "background-color": "#d83a0f",
                         "border-width": 1,
                         "shadow": 0,
-                        "border-color": "#69dbf1"
+                        "border-color": "#d83a0f"
                     },
                     "marker": {
-                        "background-color": "#007790",
+                        "background-color": "#d83a0f",
                         "border-width": 1,
                         "shadow": 0,
-                        "border-color": "#69dbf1"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "BTCChina",
-                    "line-color": "#009872",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#009872",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#69f2d0"
-                    },
-                    "marker": {
-                        "background-color": "#009872",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#69f2d0"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "Cryptsy",
-                    "line-color": "#da534d",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#da534d",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#faa39f"
-                    },
-                    "marker": {
-                        "background-color": "#da534d",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#faa39f"
-                    }
-                },
-                {
-                    "values": [],
-                    "text": "EWMA",
-                    "line-color":"#3f0bff",
-    		  			"line-style":"dashed",
-                    "legend-marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "background-color": "#3f0bff",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#3f0bff"
-                    },
-                    "marker": {
-                        "background-color": "#3f0bff",
-                        "border-width": 1,
-                        "shadow": 0,
-                        "border-color": "#3f0bff"
+                        "border-color": "#d83a0f"
                     }
                 }
         ]
@@ -650,31 +425,3 @@ zingchart.render({
 	height: 600, 
 	width: 825 
 });
-
-//real-time feed random math function
-window.BTCfeed = function(callback) {
-  var tick = {};
-  tick.plot0 = parseInt(1000 * Math.random() + 7000, 10);
-  tick.plot1 = parseInt(1000 * Math.random() + 7000, 10);
-  tick.plot2 = parseInt(1000 * Math.random() + 7000, 10);
-  tick.plot3 = Math.round( ((tick.plot0 + tick.plot1 + tick.plot2) / 3));
-  callback(JSON.stringify(tick));
-};
-
-window.ETHfeed = function(callback) {
-  var tick = {};
-  tick.plot0 = parseInt(100 * Math.random() + 650, 10);
-  tick.plot1 = parseInt(100 * Math.random() + 650, 10);
-  tick.plot2 = parseInt(100 * Math.random() + 650, 10);
-  tick.plot3 = Math.round( ((tick.plot0 + tick.plot1 + tick.plot2) / 3));
-  callback(JSON.stringify(tick));
-};
-
-window.LTCfeed = function(callback) {
-  var tick = {};
-  tick.plot0 = parseInt(25 * Math.random() + 60, 10);
-  tick.plot1 = parseInt(25 * Math.random() + 60, 10);
-  tick.plot2 = parseInt(25 * Math.random() + 60, 10);
-  tick.plot3 = Math.round( ((tick.plot0 + tick.plot1 + tick.plot2) / 3));
-  callback(JSON.stringify(tick));
-};
