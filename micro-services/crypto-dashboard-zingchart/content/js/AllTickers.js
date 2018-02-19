@@ -27,6 +27,7 @@ var myConfig = {
       "x":"3%",
       "y":"7%",
       "utc": true,
+      "timezone": -8,
       "border-radius":4,
       "title":{
          "text":"<b>BTC/USD</b>",
@@ -42,7 +43,7 @@ var myConfig = {
          "visible": false
       },
       "scale-x": {
-        "min-value": 1518640974669,
+        "min-value": 1518710128611,
         "step": 1000,
         "line-color": "#000000",
         "tick": {
@@ -70,7 +71,7 @@ var myConfig = {
         "minor-ticks": 0
       },
       "scale-y": {
-        "values": "9200:9350:10",
+        "values": "9350:9550:20",
         "line-color": "#000000",
         "shadow": 0,
         "tick": {
@@ -107,10 +108,10 @@ var myConfig = {
             },
        
         "refresh": {
-    				"type": 'feed',
-    				"transport":"websockets",
-    				"url": "ws://localhost:5218",
-    				"method" : "push"
+    			type: "feed",
+  			transport: "js",
+  			url: "feedBTC()",
+  			interval: 500
   	    },
         "plot": {
             "tooltip-text": "%t views: %v<br>%k",
@@ -159,6 +160,7 @@ var myConfig = {
       "x":"3%",
       "y":"38%",
       "utc": true,
+      "timezone": -8,
       "border-radius":4,
       "title":{
          "text":"<b>ETH/USD</b>",
@@ -174,7 +176,7 @@ var myConfig = {
          "visible": false
       },
       "scale-x": {
-        "min-value": 1518640974669,
+        "min-value": 1518710128611,
         "step": 1000,
         "line-color": "#000000",
         "tick": {
@@ -202,7 +204,7 @@ var myConfig = {
         "minor-ticks": 0
       },
       "scale-y": {
-        "values": "880:980:10",
+        "values": "900:930:2",
         "line-color": "#000000",
         "shadow": 0,
         "tick": {
@@ -239,10 +241,10 @@ var myConfig = {
             },
        
         "refresh": {
-    				"type": 'feed',
-    				"transport":"websockets",
-    				"url": "ws://localhost:5219",
-    				"method" : "push"
+    			type: "feed",
+  			transport: "js",
+  			url: "feedETH()",
+  			interval: 500
   	    },
         "plot": {
             "tooltip-text": "%t views: %v<br>%k",
@@ -292,6 +294,7 @@ var myConfig = {
       "x":"3%",
       "y":"69%",
       "utc": true,
+      "timezone": -8,
       "border-radius":4,
       "title":{
          "text":"<b>LTC/USD</b>",
@@ -307,7 +310,7 @@ var myConfig = {
          "visible": false
       },
       "scale-x": {
-        "min-value": 1518640974669,
+        "min-value": 1518710128611,
         "step": 1000,
         "line-color": "#000000",
         "tick": {
@@ -335,7 +338,7 @@ var myConfig = {
         "minor-ticks": 0
       },
       "scale-y": {
-        "values": "190:220:5",
+        "values": "205:215:1",
         "line-color": "#000000",
         "shadow": 0,
         "tick": {
@@ -372,10 +375,10 @@ var myConfig = {
             },
        
         "refresh": {
-    				"type": 'feed',
-    				"transport":"websockets",
-    				"url": "ws://localhost:5220",
-    				"method" : "push"
+    			type: "feed",
+  			transport: "js",
+  			url: "feedLTC()",
+  			interval: 500
   	    },
         "plot": {
             "tooltip-text": "%t views: %v<br>%k",
@@ -424,4 +427,51 @@ zingchart.render({
 	data : myConfig, 
 	height: 600, 
 	width: 825 
-});
+});0
+
+
+function newFeed(topic) {
+  var feed = {}
+  feed.feed = function(callback) {
+    var tick = feed.events.shift()
+    if (tick) {
+      callback(JSON.stringify(tick))
+    }
+  }
+  feed.events = []
+  feed.ws = {}
+  feed.connect = function() {
+    var url = "ws://35.197.123.209:9090/ws/consumer/" + topic
+    feed.ws = new WebSocket(url);
+    feed.ws.onmessage = function (evt) 
+    { 
+      console.log("event:")
+
+      var receiveMsg = JSON.parse(evt.data);
+      // covert base64 data
+      data = atob(receiveMsg.payload)
+      console.log("data %o", data)
+      data = JSON.parse(data)[0]
+      var tick = {}
+      tick.plot0 = data.Price
+      tick["scale-x"] = data.LastUpdate
+      feed.events.push(tick)
+    };
+  }
+
+  feed.connect()
+
+  return feed
+}
+
+
+
+window.feedBTC = newFeed("persistent/cryptodemo/north-america/quotes/BTC_USD/dashboard-subscription").feed
+
+// for other charts
+window.feedETH = newFeed("persistent/cryptodemo/north-america/quotes/ETH_USD/dashboard-subscription").feed
+window.feedLTC = newFeed("persistent/cryptodemo/north-america/quotes/LTC_USD/dashboard-subscription").feed
+
+
+
+
