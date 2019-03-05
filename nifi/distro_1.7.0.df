@@ -1,10 +1,10 @@
-FROM apache/nifi
+FROM apache/nifi:1.7.0
 
 #####################################################################
 # Environment Variables
 #####################################################################
 ARG NIFI_VERSION=1.7.0
-ENV NIFI_HOME=/opt/nifi/nifi-current
+ENV NIFI_HOME=/opt/nifi/nifi-1.7.0
 
 #####################################################################
 # Add the Pulsar Processors

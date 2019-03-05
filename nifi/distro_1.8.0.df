@@ -1,4 +1,4 @@
-FROM apache/nifi
+FROM apache/nifi:1.8.0
 
 #####################################################################
 # Environment Variables
